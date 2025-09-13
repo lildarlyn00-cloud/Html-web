@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MY PORTFOLIO</title>
+  <style>
+    @font-face {
+      font-family: 'Algerian';
+      src: local('Algerian'), url('https://fonts.cdnfonts.com/s/15391/Algerian.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1500&q=80') center center/cover no-repeat fixed,
+                  linear-gradient(135deg, #141560 0%, #1c2670 40%, #283d8c 100%);
+      box-shadow:
+        0 0 60px 0 #00f,
+        0 0 120px 0 #a020f0;
+      overflow: hidden;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      box-sizing: border-box;
+      border: 10px solid transparent;
+      border-image: linear-gradient(90deg, #00f 0%, #a020f0 100%);
+      border-image-slice: 1;
+      box-shadow:
+        0 0 50px 10px #00f,
+        0 0 80px 20px #a020f0,
+        0 0 120px 30px #00f;
+      pointer-events: none;
+      animation: neonEdgePulse 4s infinite alternate;
+    }
+    @keyframes neonEdgePulse {
+      0% {
+        box-shadow:
+          0 0 50px 10px #00f,
+          0 0 80px 20px #a020f0,
+          0 0 120px 30px #00f;
+      }
+      60% {
+        box-shadow:
+          0 0 80px 20px #a020f0,
+          0 0 50px 10px #00f,
+          0 0 160px 40px #a020f0;
+      }
+      100% {
+        box-shadow:
+          0 0 120px 30px #00f,
+          0 0 80px 20px #a020f0,
+          0 0 200px 50px #a020f0;
+      }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      opacity: 0.18;
+    }
+    .date-runtime-container {
+      width: 100%;
+      text-align: right;
+      padding: 0.75rem 2rem 0.3rem 0;
+      position: relative;
+      z-index: 2;
+    }
+    .date-runtime {
+      display: inline-block;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ff00cc 0%, #3333ff 50%, #00ffcc 100%);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      box-shadow: 0 0 8px #ff00cc, 0 0 8px #3333ff, 0 0 16px #00ffcc;
+      letter-spacing: 2px;
+      margin-bottom: 0.2rem;
+      animation: rainbowPulse 3s infinite alternate;
+    }
+    @keyframes rainbowPulse {
+      0% { box-shadow: 0 0 8px #ff00cc, 0 0 8px #3333ff, 0 0 16px #00ffcc; }
+      50% { box-shadow: 0 0 16px #00ffcc, 0 0 20px #ff00cc, 0 0 24px #3333ff; }
+      100% { box-shadow: 0 0 8px #ff00cc, 0 0 18px #3333ff, 0 0 28px #00ffcc; }
+    }
+    header {
+      background: rgba(30, 40, 70, 0.8);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 32px rgba(40,70,120,0.12);
+    }
+    .portfolio-title {
+      font-family: 'Algerian', Arial, sans-serif;
+      font-size: 28px;
+      text-align: center;
+      color: #0f0;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 7px #0f0,
+        0 0 12px #0fd,
+        0 0 21px #0fa,
+        0 0 30px #0f0;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+    .darlington-tech {
+      font-family: 'Algerian', Arial, sans-serif;
+      font-size: 30px;
+      text-align: left;
+      color: #39ff14;
+      text-shadow:
+        0 0 10px #39ff14,
+        0 0 20px #39ff14,
+        0 0 40px #39ff14;
+      margin-left: 10px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    /* Circular 3D Repo Styles */
+    .github-repos-3d-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 45px;
+      margin: 2.5rem 0 2.5rem 0;
+      z-index: 2;
+      position: relative;
+    }
+    .github-repo-3d {
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle at 40% 40%, #1e90ff 40%, #a020f0 100%);
+      border-radius: 50%;
+      box-shadow:
+        0 0 36px 8px #12c2e9,
+        0 0 42px 12px #a020f0,
+        0 10px 40px #0008;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 800px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: repo3dPulse 3s infinite alternate;
+      position: relative;
+      cursor: pointer;
+    }
+    .github-repo-3d:hover {
+      transform: scale(1.08) rotateY(20deg) rotateX(7deg);
+      box-shadow:
+        0 0 60px 16px #39ff14,
+        0 0 60px 24px #1e90ff,
+        0 12px 60px #a020f0;
+      z-index: 9;
+    }
+    @keyframes repo3dPulse {
+      0% { box-shadow: 0 0 36px 8px #12c2e9, 0 0 42px 12px #a020f0, 0 10px 40px #0008;}
+      50% { box-shadow: 0 0 60px 16px #39ff14, 0 0 60px 24px #1e90ff, 0 12px 60px #a020f0;}
+      100% { box-shadow: 0 0 36px 8px #12c2e9, 0 0 52px 16px #a020f0, 0 10px 40px #0008;}
+    }
+    .github-repo-3d a {
+      display: block;
+      text-align: center;
+      font-family: 'Algerian', Arial, sans-serif;
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+      text-shadow:
+        0 0 8px #39ff14,
+        0 0 8px #1e90ff;
+      background: none;
+      padding: 0.7rem 0.5rem;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      line-height: 1.3;
+      position: relative;
+      font-weight: bold;
+      transition: color 0.2s;
+      word-break: break-word;
+      letter-spacing: 1px;
+    }
+    .github-repo-3d a:hover {
+      color: #39ff14;
+      text-shadow: 0 0 18px #1e90ff, 0 0 32px #39ff14;
+    }
+
+    .github-repos-title {
+      font-family: 'Algerian', Arial, sans-serif;
+      font-size: 24px;
+      color: #fff;
+      text-shadow: 0 0 8px #3333ff, 0 0 18px #12c2e9;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .itlab-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem auto 2rem auto;
+      z-index: 2;
+      position: relative;
+    }
+    .itlab-title {
+      font-family: 'Algerian', Arial, sans-serif;
+      font-size: 23px;
+      color: #0ff;
+      text-shadow: 0 0 12px #1e90ff, 0 0 30px #13e760;
+      margin-bottom: 1.3rem;
+      letter-spacing: 2px;
+    }
+    .itlab-3d-img {
+      width: 350px;
+      max-width: 95vw;
+      border-radius: 24px;
+      box-shadow: 0 0 36px #12c2e9, 0 0 12px #13e760;
+      margin-bottom: 0.8rem;
+      background: linear-gradient(135deg, #fff 70%, #12c2e9 100%);
+      padding: 8px;
+      animation: itlabPulse 2.5s infinite alternate;
+      display: block;
+    }
+    @keyframes itlabPulse {
+      0% { box-shadow: 0 0 18px #12c2e9, 0 0 6px #13e760;}
+      50% { box-shadow: 0 0 40px #13e760, 0 0 24px #12c2e9;}
+      100% { box-shadow: 0 0 18px #12c2e9, 0 0 26px #13e760;}
+    }
+    .itlab-caption {
+      font-family: 'Courier New', Courier, monospace;
+      color: #fff;
+      font-size: 15px;
+      margin-top: 0.2rem;
+      text-shadow: 0 0 8px #13e760;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 2rem;
+      border-radius: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    h2 { color: #245; }
+    section { margin-bottom: 2.5rem; }
+    pre, code { background: #f4f4f4; padding: 0.5rem; border-radius: 4px; }
+    ul { margin: 0.5rem 0 0.5rem 1.5rem; }
+    .level { border-left: 5px solid #245; padding-left: 1rem; margin-bottom: 2rem; }
+    .user-info-footer {
+      width: 100%;
+      background: rgba(20, 40, 90, 0.85);
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 17px;
+      text-align: center;
+      padding: 1rem 0 1rem 0;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 10;
+      box-shadow: 0 -2px 10px #3333ff;
+      letter-spacing: 2px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      animation: userGlow 2s infinite alternate;
+    }
+    .user-info-footer a {
+      color: #00ffcc;
+      text-decoration: underline;
+      padding: 0 6px;
+      font-weight: bold;
+      text-shadow: 0 0 6px #00ffcc, 0 0 12px #00bfff;
+    }
+    @keyframes userGlow {
+      0% { box-shadow: 0 -2px 10px #3333ff;}
+      50% { box-shadow: 0 -2px 18px #00ffcc;}
+      100% { box-shadow: 0 -2px 10px #3333ff;}
+    }
+    .whatsapp-info {
+      position: fixed;
+      right: 0;
+      bottom: 64px;
+      z-index: 15;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(90deg, #13e760 0%, #12c2e9 100%);
+      color: #fff;
+      padding: 0.5rem 1.3rem 0.5rem 0.7rem;
+      border-radius: 25px 0 0 25px;
+      box-shadow: 0 0 16px #13e760, 0 0 8px #12c2e9;
+      font-size: 18px;
+      font-family: 'Courier New', Courier, monospace;
+      animation: whatsappPulse 2s infinite alternate;
+    }
+    @keyframes whatsappPulse {
+      0% { box-shadow: 0 0 8px #13e760, 0 0 8px #12c2e9;}
+      50% { box-shadow: 0 0 24px #12c2e9, 0 0 18px #13e760;}
+      100% { box-shadow: 0 0 8px #13e760, 0 0 18px #12c2e9;}
+    }
+    .whatsapp-icon {
+      width: 28px;
+      height: 28px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 6px #13e760) drop-shadow(0 0 6px #12c2e9);
+      transition: transform 0.2s;
+    }
+    .whatsapp-info:hover .whatsapp-icon {
+      transform: scale(1.15) rotate(-6deg);
+    }
+    .darlington-footer {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      text-align: right;
+      padding: 0.5rem 1.5rem 0.5rem 0;
+      z-index: 99;
+      font-family: 'Algerian', Arial, sans-serif;
+      font-size: 30px;
+      font-style: italic;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      background: none;
+      pointer-events: none;
+      text-shadow: 0 0 12px #1e90ff, 0 0 34px #a020f0;
+    }
+    @media (max-width: 600px) {
+      main { padding: 1rem;}
+      .date-runtime-container { padding-right: 0.5rem;}
+      .user-info-footer { font-size: 15px; }
+      .whatsapp-info { font-size: 15px; padding: 0.3rem 0.8rem 0.3rem 0.5rem;}
+      .whatsapp-icon { width: 22px; height: 22px; margin-right: 7px; }
+      .github-repos-title { font-size: 18px;}
+      .github-repo-item { font-size: 14px; padding: 0.7rem 1rem; }
+      .github-repos-list { gap: 12px; }
+      .itlab-3d-img { width: 220px; }
+      .itlab-title { font-size: 16px; }
+      .itlab-caption { font-size: 11px; }
+      .darlington-footer { font-size: 20px; padding-right: 0.7rem;}
+      .darlington-tech { font-size: 20px; }
+      .github-repo-3d { width: 90px; height: 90px; }
+    }
+  </style>
+  <script>
+    // Set runtime and date on page load
+    window.onload = function() {
+      const startTime = new Date();
+      function pad(num) { return num.toString().padStart(2, '0'); }
+      function getDateTimeString(date) {
+        let y = date.getFullYear();
+        let m = pad(date.getMonth()+1);
+        let d = pad(date.getDate());
+        let h = pad(date.getHours());
+        let min = pad(date.getMinutes());
+        let s = pad(date.getSeconds());
+        return `${y}-${m}-${d} ${h}:${min}:${s}`;
+      }
+      document.getElementById('date-runtime').textContent =
+        "Date: " + getDateTimeString(startTime) + " | Runtime: 0s";
+      let seconds = 0;
+      setInterval(function(){
+        seconds++;
+        document.getElementById('date-runtime').textContent =
+          "Date: " + getDateTimeString(startTime) + " | Runtime: " + seconds + "s";
+      },1000);
+    };
+  </script>
+</head>
+<body>
+  <div class="date-runtime-container">
+    <span class="date-runtime" id="date-runtime"></span>
+  </div>
+  <header>
+    <div class="portfolio-title">MY PORTFOLIO</div>
+    <div class="darlington-tech">DARLINGTON TECH</div>
+    <p>Learn HTML from Beginner to Advanced Level</p>
+  </header>
+
+  <div class="github-repos-title">My GitHub Repositories</div>
+  <div class="github-repos-3d-container">
+    <div class="github-repo-3d">
+      <a href="https://github.com/lildarlyn00-cloud/Dark-web" target="_blank">Dark-web</a>
+    </div>
+    <div class="github-repo-3d">
+      <a href="https://github.com/lildarlyn00-cloud/Html-web" target="_blank">Html-web</a>
+    </div>
+    <div class="github-repo-3d">
+      <a href="https://github.com/lildarlyn00-cloud/Xbotz-Md" target="_blank">Xbotz-Md</a>
+    </div>
+    <div class="github-repo-3d">
+      <a href="https://github.com/lildarlyn00-cloud/LUCKY-MD-XFORCE" target="_blank">LUCKY-MD-XFORCE</a>
+    </div>
+    <div class="github-repo-3d">
+      <a href="https://github.com/lildarlyn00-cloud/Knightbot-MD" target="_blank">Knightbot-MD</a>
+    </div>
+  </div>
+
+  <div class="itlab-container">
+    <div class="itlab-title">IT Lab - 3D Coder Typing HTML Code</div>
+    <img class="itlab-3d-img" src="https://cdni.iconscout.com/illustration/premium/thumb/coding-in-it-lab-4656196-3867920.png" alt="IT Lab with Coder Typing HTML Code 3D">
+    <div class="itlab-caption">A futuristic IT lab with a coder working on HTML code in 3D style.</div>
+  </div>
+
+  <main>
+    <!-- ... rest of your content ... -->
+  </main>
+  <div class="whatsapp-info">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+    <span>254100876884</span>
+  </div>
+  <div class="user-info-footer">
+    User: <strong>lildarlyn00-cloud</strong> |
+    Top repositories:
+    <a href="https://github.com/lildarlyn00-cloud/Dark-web" target="_blank">Dark-web</a>
+    <a href="https://github.com/lildarlyn00-cloud/Html-web" target="_blank">Html-web</a>
+    <a href="https://github.com/lildarlyn00-cloud/Xbotz-Md" target="_blank">Xbotz-Md</a>
+    <a href="https://github.com/lildarlyn00-cloud/LUCKY-MD-XFORCE" target="_blank">LUCKY-MD-XFORCE</a>
+    <a href="https://github.com/lildarlyn00-cloud/Knightbot-MD" target="_blank">Knightbot-MD</a>
+    <span style="margin-left:8px;">| Date/Time: <strong>2025-09-13 10:23:03 (UTC)</strong></span>
+  </div>
+  <div class="darlington-footer">
+    DARLINGTON.HTML
+  </div>
+</body>
+</html>
